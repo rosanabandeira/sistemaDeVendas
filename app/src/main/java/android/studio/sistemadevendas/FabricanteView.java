@@ -1,10 +1,13 @@
 package android.studio.sistemadevendas;
 
 import android.content.Context;
+import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
@@ -50,5 +53,19 @@ public class FabricanteView extends AppCompatActivity {
             arrayAdapter.notifyDataSetChanged();
             lst1.invalidateViews();
         }
+
+        lst1.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                String aaa = titles.get(position).toString();
+                Fab br = brann.get((position));
+                Intent i = new Intent(getApplicationContext(), FabricanteEditar.class);
+                i.putExtra("id", br.id);
+                i.putExtra("fabricante", br.fabricante);
+                i.putExtra("fabdesc", br.fabricanteDescricao);
+
+                startActivity(i);
+            }
+        });
     }
 }
