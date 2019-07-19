@@ -39,6 +39,21 @@ public class CategoriaEditar extends AppCompatActivity {
         ed2.setText(categoria);
         ed3.setText(descricao);
 
+        b3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(getApplicationContext(), Main.class);
+                startActivity(i);
+            }
+        });
+
+        b2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                deletar();
+            }
+        });
+
         b1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -75,17 +90,14 @@ public class CategoriaEditar extends AppCompatActivity {
     public void deletar() {
         try {
             String catid = ed1.getText().toString();
-            String categoriaNome = ed2.getText().toString();
-            String catDescricao = ed3.getText().toString();
 
             SQLiteDatabase db = openOrCreateDatabase("supervenda", Context.MODE_PRIVATE, null);
-            String sql = "update categoria set categoria =?,catdes =? where id=?";
+            String sql = "delete from categoria where id=?";
             SQLiteStatement statement = db.compileStatement(sql);
-            statement.bindString(1, categoriaNome);
-            statement.bindString(2, catDescricao);
-            statement.bindString(3, catid);
+
+            statement.bindString(1, catid);
             statement.execute();
-            Toast.makeText(this, "Categoria atualizada com sucesso", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Categoria deletada com sucesso", Toast.LENGTH_SHORT).show();
 
             Intent i = new Intent(getApplicationContext(), Main.class);
             startActivity(i);

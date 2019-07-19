@@ -50,7 +50,7 @@ public class Categoria extends AppCompatActivity {
             String categoria = ed1.getText().toString();
             String descricao = ed2.getText().toString();
             SQLiteDatabase db = openOrCreateDatabase("supervenda", Context.MODE_PRIVATE, null);
-            db.execSQL("CREATE TABLE IF NOT EXISTS categoria(id INTERGER PRIMARY KEY AUTOINCREMENT, categoria VARCHAR, catdes VARCHAR)");
+            db.execSQL("CREATE TABLE IF NOT EXISTS categoria(id INTERGER PRIMARY KEY, categoria VARCHAR, catdes VARCHAR)");
 
 
             String sql = "insert into categoria(categoria, catdes)values(?,?)";

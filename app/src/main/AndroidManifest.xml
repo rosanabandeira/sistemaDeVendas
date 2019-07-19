@@ -9,7 +9,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".CategoriaEditar"></activity>
+        <activity android:name=".Fabricante"></activity>
+        <activity android:name=".CategoriaEditar" />
         <activity android:name=".CategoriaView" />
         <activity android:name=".Categoria" />
         <activity android:name=".Main" />
